@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Avvisi merce pronta</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F4F7;--sf:#fff;--sf2:#F8FAFC;--ln:#E6E8EE;--ink:#111827;--ink2:#3F4A5A;--ink3:#6B7686;--ac:#0891B2;--acd:#0E7490;--acw:#ECFEFF;--gr:#16A34A;--grw:#DCFCE7;--am:#B45309;--amw:#FEF3C7;--bl:#2563EB;--blw:#DBEAFE;--rd:#B91C1C;--rdw:#FEE2E2}
+:root[data-tema="scuro"]{--bg:#0F141B;--sf:#161D27;--sf2:#131A23;--ln:#263243;--ink:#E6EBF2;--ink2:#CBD5E1;--ink3:#94A3B8;--acw:rgba(34,211,238,.1);--grw:rgba(52,211,153,.12);--amw:rgba(245,158,11,.15);--am:#F59E0B;--blw:rgba(96,165,250,.14);--bl:#60A5FA;--rdw:rgba(248,113,113,.14);--rd:#F87171}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);padding:22px 24px 40px;font-size:13px}
+button,input{font-family:inherit}
+.ph{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.ph h1{font-size:22px;font-weight:800;letter-spacing:-.02em;width:100%}
+.ph p{font-size:13px;color:var(--ink3)}
+.agg{font-size:11px;color:var(--ink3);border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:3px 10px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.tile{border:1px solid var(--ln);border-radius:14px;background:var(--sf);padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;color:inherit}
+.tile.on{border:1.5px solid var(--ac);box-shadow:0 0 0 3px var(--acw)}
+.tile .i{width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.tile b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.tile small{font-size:12px;color:var(--ink3)}
+.c{background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--ln);flex-wrap:wrap}
+.sg{display:inline-flex;border:1px solid var(--ln);border-radius:9px;overflow:hidden;background:var(--sf2)}
+.sg button{border:0;border-right:1px solid var(--ln);background:transparent;padding:7px 13px;font-size:12.5px;font-weight:600;color:var(--ink3);cursor:pointer}
+.sg button:last-child{border-right:0}
+.sg button.on{background:var(--acw);color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+input[type=search]{border:1px solid var(--ln);border-radius:9px;padding:8px 11px;font-size:13px;background:var(--sf);color:var(--ink);width:260px;max-width:100%}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:700;padding:9px 18px;background:var(--sf2);border-bottom:1px solid var(--ln);white-space:nowrap}
+td{padding:11px 18px;border-bottom:1px solid var(--ln);vertical-align:middle;color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--sf2)}
+td.nm b{font-size:13.5px;font-weight:700;color:var(--ink)}
+td.nm small{display:block;font-size:11.5px;color:var(--ink3);margin-top:2px}
+.r{text-align:right}.p{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;white-space:nowrap;vertical-align:1px}
+.chip.fv{background:var(--amw);color:var(--am)}.chip.te{background:var(--rdw);color:var(--rd)}
+.chip.bl{background:var(--blw);color:var(--bl)}.chip.am{background:var(--amw);color:var(--am)}.chip.gr{background:var(--grw);color:var(--gr)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ac);background:var(--ac);color:#fff;border-radius:999px;padding:8px 15px;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--acd);border-color:var(--acd)}
+.spin{width:16px;height:16px;border:2px solid var(--acw);border-top-color:var(--ac);border-radius:50%;animation:gira .8s linear infinite;display:inline-block;vertical-align:-3px;margin-right:8px}@keyframes gira{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:30px;color:var(--ink3)}
+.chiave{max-width:420px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:18px}
+.chiave p{font-size:13px;color:var(--ink3);margin-bottom:10px}.chiave form{display:flex;gap:8px}
+.chiave input{flex:1;border:1px solid var(--ln);border-radius:999px;padding:9px 14px;font-size:13px;background:var(--sf);color:var(--ink)}
+.velo{position:fixed;inset:0;background:rgba(15,20,27,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.fin{background:var(--sf);border:1px solid var(--ln);border-radius:16px;width:100%;max-width:520px;box-shadow:0 20px 50px rgba(16,24,40,.25);overflow:hidden}
+.fin .hd{justify-content:flex-start}
+.fin .hd .i{width:30px;height:30px;border-radius:9px;background:var(--blw);color:var(--bl);display:inline-flex;align-items:center;justify-content:center}
+.fin .hd b{display:block;font-size:15px;font-weight:800}.fin .hd small{display:block;font-size:12px;color:var(--ink3)}
+.fin .x{margin-left:auto;border:0;background:transparent;color:var(--ink3);font-size:20px;cursor:pointer;line-height:1}
+.righe{padding:6px 18px 0}
+.riga{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.riga span{color:var(--ink3)}.riga b{font-weight:600;text-align:right}
+.data{margin:14px 18px;padding:12px 14px;background:var(--acw);border-radius:12px}
+.data label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+.data input{width:100%;border:1px solid var(--ln);border-radius:9px;padding:9px 11px;font-size:14px;background:var(--sf);color:var(--ink)}
+.data small{display:block;font-size:11px;color:var(--ink3);margin-top:5px}
+.warn{margin:0 18px 12px;padding:10px 12px;background:var(--amw);color:var(--am);border-radius:10px;font-size:12px}
+.piede{display:flex;justify-content:flex-end;gap:8px;padding:14px 18px;border-top:1px solid var(--ln)}
+.btn.sec{background:var(--sf);color:var(--ink2);border-color:var(--ln)}.btn.sec:hover{border-color:var(--ac);color:var(--ac);background:var(--sf)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{padding:16px 18px;font-size:13.5px;line-height:1.5}
+.toast{position:fixed;bottom:20px;right:20px;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:600;z-index:60;background:var(--sf);border:1px solid var(--ln);box-shadow:0 10px 30px rgba(16,24,40,.15)}
+.toast.ok{border-color:var(--gr);color:var(--gr)}.toast.err{border-color:var(--rd);color:var(--rd)}
+@media (max-width:800px){.tiles{grid-template-columns:1fr}th.h,td.h{display:none}}
+</style></head><body>
+<div class="ph"><h1>Avvisi merce pronta</h1><p>Quando la merce di un cliente è pronta: si conferma l'avviso, si aspetta, si spedisce.</p><span class="agg" id="agg">aggiornato --:--</span></div>
+<div id="corpo"><p class="empty" style="text-align:left">Caricamento...</p></div>
+<script>
+/* PORTALE NEXT-110: stessa pagina di prima (n8n «Gestisci Avviso Merce Pronta», GET /avvisi-merce-pronta e /gestisci-avviso-merce), ridisegnata
+   come il mockup del portale. Gli avvisi arrivano dalla funzione avvisi-merce (password della regia), divisi per stato
+   come prima: ready = da confermare, pending = in attesa, sent = inviati. L'invio vero resta sul webhook n8n invia-avviso-merce. */
+var EF='https://pnxhthrheqeucoisifjw.supabase.co/functions/v1/avvisi-merce';
+var N8='https://n8n.srv1030489.hstgr.cloud/webhook/';
+var PASS='',A=[],TAB='ready',Q='';
+var ICO={clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',send:'<path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',ok:'<path d="M5 12l5 5L20 7"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',flame:'<path d="M12 3c1 3 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 0-8z"/>'};
+function svg(k,n){n=n||15;return '<svg width="'+n+'" height="'+n+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICO[k]+'</svg>';}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function eur(v){var p=Number(v||0).toFixed(2).split('.');return p[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.')+','+p[1]+' €';}
+function data(t){return t?new Date(t).toLocaleDateString('it-IT'):'-';}
+function tipo(a){if(!a.product_type)return '';return a.product_type==='fotovoltaico'?' <span class="chip fv">'+svg('sun',11)+' FV</span>':' <span class="chip te">'+svg('flame',11)+' Termico</span>';}
+function cliente(a){return '<td class="nm"><b>'+esc(a.client_name)+'</b>'+tipo(a)+(a.product_desc?'<small>'+esc(a.product_desc)+'</small>':'')+'</td>';}
+function gg(a){var d=Math.max(0,Math.ceil((new Date(a.notify_after).getTime()-Date.now())/864e5));return d;}
+var TABS={ready:['Da confermare','bl','box'],pending:['In attesa','am','clock'],sent:['Inviati','gr','send']};
+function disegna(){
+ var per={ready:[],pending:[],sent:[]};A.forEach(function(a){if(per[a.status])per[a.status].push(a);});
+ var q=Q.toLowerCase(),L=per[TAB].filter(function(a){return !q||[a.client_name,a.invoice_name,a.so_name,a.product_desc].join(' ').toLowerCase().indexOf(q)>=0;});
+ var h='<div class="tiles">'+Object.keys(TABS).map(function(k){var t=TABS[k];return '<button class="tile'+(k===TAB?' on':'')+'" data-tab="'+k+'"><span class="i" style="background:var(--'+t[1]+'w);color:var(--'+t[1]+')">'+svg(t[2],16)+'</span><span><b>'+per[k].length+'</b><small>'+t[0]+'</small></span></button>';}).join('')+'</div>';
+ h+='<section class="c"><div class="hd"><span class="sg">'+Object.keys(TABS).map(function(k){return '<button data-tab="'+k+'"'+(k===TAB?' class="on"':'')+'>'+TABS[k][0]+' · '+per[k].length+'</button>';}).join('')+'</span><input type="search" id="cerca" placeholder="Cerca cliente, fattura, ordine…" value="'+esc(Q)+'"></div>';
+ var head,rows;
+ if(TAB==='ready'){head='<th>Cliente</th><th class="h">Fattura</th><th class="h">Ordine</th><th class="r">30% ricevuto</th><th></th>';
+  rows=L.map(function(a){return '<tr>'+cliente(a)+'<td class="h">'+esc(a.invoice_name)+'</td><td class="h">'+esc(a.so_name)+'</td><td class="r p">'+eur(a.rata_amount)+'</td><td class="r"><button class="btn" data-gestisci="'+esc(a.id)+'">'+svg('send',13)+'Gestisci invio</button></td></tr>';}).join('');}
+ else if(TAB==='pending'){head='<th>Cliente</th><th class="h">Fattura</th><th class="h">Ordine</th><th class="r">30% ricevuto</th><th>Pronto il</th><th class="r">Mancano</th>';
+  rows=L.map(function(a){var d=gg(a);return '<tr>'+cliente(a)+'<td class="h">'+esc(a.invoice_name)+'</td><td class="h">'+esc(a.so_name)+'</td><td class="r p">'+eur(a.rata_amount)+'</td><td>'+data(a.notify_after)+'</td><td class="r"><span class="chip '+(d<=2?'am':'bl')+'">'+svg('clock',11)+' '+d+(d===1?' giorno':' giorni')+'</span></td></tr>';}).join('');}
+ else{head='<th>Cliente</th><th class="h">Fattura</th><th class="h">Ordine</th><th>Inviato il</th><th>Consegna</th><th></th>';
+  rows=L.map(function(a){return '<tr>'+cliente(a)+'<td class="h">'+esc(a.invoice_name)+'</td><td class="h">'+esc(a.so_name)+'</td><td>'+data(a.sent_to_client_at)+'</td><td>'+(a.data_consegna?data(a.data_consegna):'-')+'</td><td class="r"><span class="chip gr">'+svg('ok',11)+' Inviato</span></td></tr>';}).join('');}
+ var vuoto={ready:'Nessun avviso da confermare',pending:'Nessun avviso in attesa',sent:'Nessun avviso inviato'}[TAB];
+ h+=L.length?'<table><thead><tr>'+head+'</tr></thead><tbody>'+rows+'</tbody></table>':'<p class="empty">'+(q?'Nessun risultato per questa ricerca':vuoto)+'</p>';
+ h+='</section>';
+ document.getElementById('corpo').innerHTML=h;
+ var c=document.getElementById('cerca');c.oninput=function(){Q=this.value;var pos=this.selectionStart;disegna();var n=document.getElementById('cerca');n.focus();try{n.setSelectionRange(pos,pos)}catch(e){}};
+}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(b){TAB=b.getAttribute('data-tab');disegna();}});
+
+/* ===== «Gestisci invio» dentro il portale (prima: pagina n8n gestisci-avviso-merce). Stessi dati, stessa data
+   proposta (oggi + 5 giorni), stessa chiamata: POST invia-avviso-merce { avviso_id, data_consegna }.
+   Le conferme sono finestre a video del portale, non piu gli avvisi del browser. ===== */
+function toast(m,ok){var t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t);}t.className='toast '+(ok?'ok':'err');t.textContent=m;clearTimeout(window.__tt);window.__tt=setTimeout(function(){t.remove();},4000);}
+function chiudi(){var v=document.getElementById('velo');if(v)v.remove();}
+function finestra(h){chiudi();var v=document.createElement('div');v.className='velo';v.id='velo';v.innerHTML='<div class="fin">'+h+'</div>';v.addEventListener('click',function(e){if(e.target===v)chiudi();});document.body.appendChild(v);}
+function chiedi(titolo,testo,si){return new Promise(function(ok){finestra('<div class="hd"><span class="i">'+svg('send',15)+'</span><div><b>'+esc(titolo)+'</b></div></div><div class="msg">'+testo+'</div><div class="piede"><button class="btn sec" id="cNo">Annulla</button><button class="btn" id="cSi">'+esc(si||'Conferma')+'</button></div>');
+ document.getElementById('cNo').onclick=function(){chiudi();ok(false);};document.getElementById('cSi').onclick=function(){chiudi();ok(true);};});}
+function gestisci(id){
+ var a=A.filter(function(x){return String(x.id)===String(id);})[0];if(!a)return;
+ if(a.status==='sent'){finestra('<div class="msg">Avviso già inviato a '+esc(a.client_name)+' il '+data(a.sent_to_client_at)+'.</div><div class="piede"><button class="btn" onclick="chiudi()">Chiudi</button></div>');return;}
+ var def=new Date(Date.now()+5*864e5).toISOString().substring(0,10);
+ var r=function(k,v,st){return '<div class="riga"><span>'+k+'</span><b'+(st?' style="'+st+'"':'')+'>'+v+'</b></div>';};
+ finestra('<div class="hd"><span class="i">'+svg('box',15)+'</span><div><b>'+esc(a.client_name)+'</b><small>Pronto per invio</small></div><button class="x" onclick="chiudi()" aria-label="Chiudi">×</button></div>'
+  +'<div class="righe">'+r('Fattura',esc(a.invoice_name))+r('Ordine',esc(a.so_name))+r('Indirizzo',esc(a.client_address||'-'))+r('Località',esc(((a.client_zip||'')+' '+(a.client_city||'-')).trim()))
+  +r('Email cliente',esc(a.client_email||'NON PRESENTE'),a.client_email?'color:var(--ac)':'color:var(--rd)')+r('Data contratto',a.data_contratto?data(a.data_contratto):'-')+r('30% ricevuto',eur(a.rata_amount),'color:var(--gr)')+'</div>'
+  +'<div class="data"><label for="dCons">Data di consegna prevista</label><input type="date" id="dCons" value="'+def+'"><small>Proposta: oggi + 5 giorni. Cambiala se serve.</small></div>'
+  +(a.client_email?'':'<div class="warn">Email cliente non presente in Odoo. Aggiorna l\'anagrafica prima di inviare.</div>')
+  +'<div class="piede"><button class="btn sec" onclick="chiudi()">Annulla</button><button class="btn" id="bInvia"'+(a.client_email?'':' disabled')+'>'+svg('send',13)+'Conferma e invia avviso al cliente</button></div>');
+ var b=document.getElementById('bInvia');if(b)b.onclick=async function(){
+  var dc=document.getElementById('dCons').value;if(!dc){toast('Scegli una data di consegna',false);return;}
+  if(!await chiedi('Invia l\'avviso','Confermi l\'invio dell\'avviso di merce pronta a <b>'+esc(a.client_name)+'</b>, con consegna prevista il <b>'+new Date(dc).toLocaleDateString('it-IT')+'</b>?','Invia'))return gestisci(id);
+  finestra('<div class="msg"><span class="spin"></span>Invio in corso…</div>');
+  try{var resp=await fetch(N8+'invia-avviso-merce',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({avviso_id:a.id,data_consegna:dc})});var d=await resp.json();
+   if(!d.success)throw new Error(d.error||'Errore');
+   chiudi();toast('Avviso inviato a '+a.client_name,true);a.status='sent';a.sent_to_client_at=new Date().toISOString();a.data_consegna=dc;disegna();}
+  catch(e){chiudi();toast('Errore: '+(e.message||e),false);}
+ };
+}
+document.addEventListener('click',function(e){var g=e.target.closest('[data-gestisci]');if(g)gestisci(g.getAttribute('data-gestisci'));});
+function chiediPass(msg){document.getElementById('corpo').innerHTML='<div class="chiave"><p>'+(msg||'Scrivi la password della regia per aprire gli avvisi.')+'</p><form id="fp"><input type="password" id="ip" autocomplete="current-password" placeholder="password"><button class="btn">Entra</button></form></div>';
+ document.getElementById('fp').onsubmit=function(e){e.preventDefault();PASS=document.getElementById('ip').value.trim();try{sessionStorage.setItem('regia_pass',PASS)}catch(x){}carica();};}
+async function carica(){if(!PASS){chiediPass();return;}
+ try{var r=await fetch(EF+'?t='+encodeURIComponent(PASS));var d=await r.json();
+  if(r.status===401){PASS='';try{sessionStorage.removeItem('regia_pass')}catch(x){}chiediPass('Password non valida, riprova.');return;}
+  if(!d.ok)throw new Error(d.errore||'errore');A=d.avvisi||[];disegna();
+  document.getElementById('agg').textContent='aggiornato '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
+ catch(e){document.getElementById('corpo').innerHTML='<p class="empty">Errore: '+esc(e.message||e)+'</p>';}}
+window.addEventListener('message',function(e){var d=e.data||{};
+ if(d.tipo==='tema'&&(d.tema==='chiaro'||d.tema==='scuro'))document.documentElement.setAttribute('data-tema',d.tema);
+ if(d.tipo==='pass'&&d.pass&&!PASS){PASS=d.pass;carica();}});
+try{PASS=sessionStorage.getItem('regia_pass')||'';}catch(e){}
+try{var t=window.parent.document.documentElement.getAttribute('data-tema');if(t)document.documentElement.setAttribute('data-tema',t);}catch(e){}
+if(PASS)carica();else{try{window.parent.postMessage({tipo:'chiedi_pass'},'*');}catch(e){}setTimeout(function(){if(!PASS)chiediPass();},700);}
+</script></body></html>
